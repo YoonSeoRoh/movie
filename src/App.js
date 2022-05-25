@@ -1,11 +1,22 @@
 import "./App.css";
-import "bootswatch/dist/slate/bootstrap.min.css";
-import Navbar from "./component/navbar";
+import styled from "styled-components";
+import { useState } from "react";
+import MovieContainer from "./component/MovieContainer";
+import Search from "./component/Search";
+import Header from "./component/Header";
+
+const Container = styled.div``;
 
 function App() {
+  const [data, setData] = useState("");
+  console.log("check state from App");
   return (
     <div className="App">
-      <Navbar />
+      <Header />
+      <Container>
+        <Search setData={setData} />
+        <MovieContainer word={data} />
+      </Container>
     </div>
   );
 }
