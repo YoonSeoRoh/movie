@@ -22,10 +22,11 @@ export default function MovieCard({
   image,
   link,
   pubDate,
-  subtitle,
   title,
   userRating,
 }) {
+  title = title.replace("<br>", "");
+  console.log(title);
   return (
     <MovieWrap>
       <a href={id}>
@@ -37,6 +38,9 @@ export default function MovieCard({
         <span>감독: {director}</span>
         <span>출연: {actor}</span>
         <span>평점: {userRating}</span>
+        <a href={link} style={{ color: "#ffffff" }}>
+          더보기
+        </a>
       </Detail>
     </MovieWrap>
   );

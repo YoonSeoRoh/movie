@@ -1,8 +1,14 @@
 //영화 목록 그리기
 //데이터 요청
+import styled from "styled-components";
 import MovieCard from "./MovieCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
+
+const MovieListWrap = styled.div`
+  width: 100%;
+  background-color: #161b20;
+`;
 
 export default function MovieContainer(props) {
   const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
@@ -30,23 +36,28 @@ export default function MovieContainer(props) {
     }
   }, [props.word, CLIENT_ID, CLIENT_SECRET]);
   return (
-    <>
+    <MovieListWrap>
       {isLoading
         ? "Loading..."
         : movies &&
-          movies.items.map((movie, idx) => (
-            <MovieCard
-              id={idx}
-              actor={movie.actor}
-              director={movie.director}
-              image={movie.image}
-              link={movie.link}
-              pubDate={movie.pubDate}
-              subtitle={movie.subtitle}
-              title={movie.title}
-              userRating={movie.userRating}
-            />
-          ))}
-    </>
+          movies.items.map((movie, idx) => {
+            const title = movie.title;
+            const newTitle = title.replace(/(<([^>]+)>)/gi, "");
+            const director = movie.director;
+            const newDirector = director.replace("|", "");
+            return (
+              <MovieCard
+                id={idx}
+                actor={movie.actor}
+                director={newDirector}
+                image={movie.image}
+                link={movie.link}
+                pubDate={movie.pubDate}
+                title={newTitle}
+                userRating={movie.userRating}
+              />
+            );
+          })}
+    </MovieListWrap>
   );
 }
