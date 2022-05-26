@@ -29,7 +29,6 @@ export default function MovieContainer(props) {
           },
         })
         .then((response) => {
-          console.log(response.data);
           setLoading(false);
           setMovies(response.data);
         });
@@ -47,7 +46,7 @@ export default function MovieContainer(props) {
             const newDirector = director.replace("|", "");
             return (
               <MovieCard
-                id={idx}
+                key={idx}
                 actor={movie.actor}
                 director={newDirector}
                 image={movie.image}

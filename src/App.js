@@ -17,7 +17,6 @@ const Container = styled.div`
 
 function App() {
   const [data, setData] = useState("");
-  console.log("check state from App");
   return (
     <>
       <Header />

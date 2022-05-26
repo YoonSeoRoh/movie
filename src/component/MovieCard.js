@@ -16,7 +16,6 @@ const Detail = styled.div`
 `;
 
 export default function MovieCard({
-  id,
   actor,
   director,
   image,
@@ -25,11 +24,9 @@ export default function MovieCard({
   title,
   userRating,
 }) {
-  title = title.replace("<br>", "");
-  console.log(title);
   return (
     <MovieWrap>
-      <a href={id}>
+      <a href={link}>
         <img style={{ padding: "10px" }} src={image} alt={title}></img>
       </a>
       <Detail>
