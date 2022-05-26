@@ -14,9 +14,10 @@ export default function MovieContainer(props) {
   const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
   const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
   const [movies, setMovies] = useState();
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
   useEffect(() => {
     if (props.word !== "") {
+      setLoading(true);
       axios
         .get("/v1/search/movie.json", {
           params: {
@@ -54,6 +55,7 @@ export default function MovieContainer(props) {
                 pubDate={movie.pubDate}
                 title={newTitle}
                 userRating={movie.userRating}
+                isList={false}
               />
             );
           })}

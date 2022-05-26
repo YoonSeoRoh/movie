@@ -1,11 +1,14 @@
 //개별 영화 그리기
 import styled from "styled-components";
+import AddBtn from "./AddBtn";
+import DeleteBtn from "./DeleteBtn";
 
 const MovieWrap = styled.div`
   display: flex;
   margin-left: 5%;
   margin-right: 5%;
   border-bottom: 1px solid white;
+  position: relative;
 `;
 
 const Detail = styled.div`
@@ -13,6 +16,11 @@ const Detail = styled.div`
   flex-direction: column;
   text-align: left;
   padding: 10px;
+`;
+
+const BtnWrap = styled.div`
+  position: absolute;
+  right: 0;
 `;
 
 export default function MovieCard({
@@ -23,6 +31,7 @@ export default function MovieCard({
   pubDate,
   title,
   userRating,
+  isList,
 }) {
   return (
     <MovieWrap>
@@ -39,6 +48,21 @@ export default function MovieCard({
           더보기
         </a>
       </Detail>
+      <BtnWrap>
+        {isList ? (
+          <DeleteBtn link={link}></DeleteBtn>
+        ) : (
+          <AddBtn
+            actor={actor}
+            director={director}
+            image={image}
+            link={link}
+            pubDate={pubDate}
+            title={title}
+            userRating={userRating}
+          />
+        )}
+      </BtnWrap>
     </MovieWrap>
   );
 }
