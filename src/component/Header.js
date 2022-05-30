@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { faBookmark, faRankingStar } from "@fortawesome/free-solid-svg-icons";
 
 const Block = styled.div`
   background-color: #161b20;
@@ -16,7 +16,7 @@ const Title = styled.h1`
   position: relative;
 `;
 
-const BookmarkBtn = styled.button`
+const BookMarkBtn = styled.button`
   background-color: transparent;
   color: #ffcd2b;
   width: 50px;
@@ -29,6 +29,19 @@ const BookmarkBtn = styled.button`
   cursor: pointer;
 `;
 
+const RankBtn = styled.button`
+  background-color: transparent;
+  color: #ffcd2b;
+  width: 50px;
+  height: 50px;
+  border: none;
+  font-size: 30px;
+  position: absolute;
+  top: 20px;
+  right: 90px;
+  cursor: pointer;
+`;
+
 export default function Header() {
   return (
     <Block>
@@ -36,9 +49,14 @@ export default function Header() {
         <Title>MY MOVIE APP</Title>
       </Link>
       <Link to="/bookmark">
-        <BookmarkBtn>
+        <BookMarkBtn>
           <FontAwesomeIcon icon={faBookmark} />
-        </BookmarkBtn>
+        </BookMarkBtn>
+      </Link>
+      <Link to="/rank">
+        <RankBtn>
+          <FontAwesomeIcon icon={faRankingStar} />
+        </RankBtn>
       </Link>
     </Block>
   );
